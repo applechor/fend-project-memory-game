@@ -51,19 +51,19 @@ The star rating reflects a player's performance which depends on number of moves
   
   ## Game dependencies
   
-  ### Animation
+  #### Animation
   
   * [CSS Animation for Beginners](https://robots.thoughtbot.com/css-animation-for-beginners)
   
   * [CSS 2D Transforms](https://www.w3schools.com/css/css3_2dtransforms.asp)
   
-  ### Flip card
+  #### Flip card
   
   * [Card Flip](https://3dtransforms.desandro.com/card-flip)
   
   * [Understanding Card Flip animation using CSS](https://medium.com/designer-recipes/understanding-card-flip-animation-using-css-391c40ed3136)
   
-  ### Timing
+  #### Timing
   
   * [JavaScript Timing Events](https://www.w3schools.com/js/js_timing.asp)
   
