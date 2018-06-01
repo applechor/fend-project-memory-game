@@ -1,7 +1,8 @@
 /*
  * Create a list that holds all of your cards
  */
-const array = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bomb', 'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bomb'];
+const original = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bomb'];
+const array = original.concat(original);
 
 /*
  * Display the cards on the page
@@ -11,13 +12,14 @@ const array = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-bolt', 'fa fa-cube
  */
 
 /**
-* @description Shuffle function from http://stackoverflow.com/a/2450976
-* @constructor
-* @param {Array} array - a list of cards
-* @returns {Array} array - a 'new' list of cards
-*/
+ * @description Shuffle function from http://stackoverflow.com/a/2450976
+ * @constructor
+ * @param {Array} array - a list of cards
+ * @returns {Array} array - a 'new' list of cards
+ */
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length,
+        temporaryValue, randomIndex;
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -29,31 +31,31 @@ function shuffle(array) {
 }
 
 /**
-* @description Create HTML for list of cards
-* @constructor
-* @param {Array} array
-* @returns {Array} list - constructed each card's HTML
-*/
+ * @description Create HTML for list of cards
+ * @constructor
+ * @param {Array} array
+ * @returns {Array} list - constructed each card's HTML
+ */
 function makeUL(array) {
     // Create the list element
     const list = document.createElement('ul');
     // Add a class and id to the list element
     list.classList.add('deck');
-    list.setAttribute('id','deck');
+    list.setAttribute('id', 'deck');
 
-    for(let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; i++) {
         // Create the list item
         const item = document.createElement('li');
         // Add a class to a list item
         item.classList.add('card');
         // Create the icon
-    	const icon = document.createElement('i');
-    	// Add a class to an icon by get it from shuffleArray
-    	icon.setAttribute('class',array[i]);
-    	// Append an icon to a list item
-    	item.appendChild(icon);
-    	// Add a list item to list(ul)
-    	list.appendChild(item);
+        const icon = document.createElement('i');
+        // Add a class to an icon by get it from shuffleArray
+        icon.setAttribute('class', array[i]);
+        // Append an icon to a list item
+        item.appendChild(icon);
+        // Add a list item to list(ul)
+        list.appendChild(item);
     }
     return list;
 }
@@ -105,226 +107,219 @@ let timer = null;
 let star = 0;
 
 /**
-* @description Display the card's symbol
-* @param {Object} Event object
-*/
+ * @description Display the card's symbol
+ * @param {Object} Event object
+ */
 function flipCard(evt) {
-	// when flip the card at the first time, then start the timer
-	if (!isTimeCount) {	
-		startTimer();
-		// set a value is True for run timer continuously
-		isTimeCount = true;
-	}
+    // when flip the card at the first time, then start the timer
+    if (!isTimeCount) {
+        startTimer();
+        // set a value is True for run timer continuously
+        isTimeCount = true;
+    }
 
-	// start to increment a number of moves
-	counter();
-	//Display a card's symbol and remove the event listener of its card
-		evt.target.classList.remove('flip-card');
-		evt.target.classList.add('open', 'show', 'flip-card');
-		// remove the click event at the target so that the program will not collects all of info about it
-		evt.target.removeEventListener(evt.type, flipCard);
-	
-	addListOpenCard(evt);
+    //Display a card's symbol and remove the event listener of its card
+    evt.target.classList.remove('flip-card');
+    evt.target.classList.add('open', 'show', 'flip-card');
+    // remove the click event at the target so that the program will not collects all of info about it
+    evt.target.removeEventListener(evt.type, flipCard);
+
+    addListOpenCard(evt);
 }
 
 /**
-* @description Add a opened card to the array
-* @param {Object} Event object
-*/
+ * @description Add a opened card to the array
+ * @param {Object} Event object
+ */
 function addListOpenCard(evt) {
-	if (evt.target.classList.contains('open')){
-		openedCard = evt.target;
-		listOpenedCard.push(openedCard);
-	}
+    if (evt.target.classList.contains('open')) {
+        let openedCard = evt.target;
+        listOpenedCard.push(openedCard);
+    }
 
-	// check the number of cards in the array, if it already has another card then check if the two cards match
-	if (listOpenedCard.length % 2 == 0)  {
-	checkMatch();
-	// all card have matched
-	checkFinish();
-	}
+    // check the number of cards in the array, if it already has another card then check if the two cards match
+    if (listOpenedCard.length % 2 === 0) {
+        checkMatch();
+        // start to increment a number of moves
+        counter();
+        // all card have matched
+        checkFinish();
+    }
 }
 
 /**
-* @description Get the value of a previous card and a current card the check the two cards match
-*/
+ * @description Get the value of a previous card and a current card the check the two cards match
+ */
 function checkMatch() {
-	 let listOpenedCardLength = listOpenedCard.length ;
-	 // get the value of a previous card in the array
-	 let previousCard = listOpenedCard[listOpenedCardLength-2];
-	 let iconPreviousCard = previousCard.firstElementChild.classList.value;
-	 // get the value of a current card in the array
-	 let currentCard = listOpenedCard[listOpenedCardLength-1];
-	 let iconCurrentCard = currentCard.firstElementChild.classList.value;
-	 	
-	 	// compare the two values
-	 	if (iconPreviousCard === iconCurrentCard) {
-			matched(previousCard,currentCard);
-		} else {
-			notMatched(previousCard,currentCard);	
-		}
+    let listOpenedCardLength = listOpenedCard.length;
+    // get the value of a previous card in the array
+    let previousCard = listOpenedCard[listOpenedCardLength - 2];
+    let iconPreviousCard = previousCard.firstElementChild.classList.value;
+    // get the value of a current card in the array
+    let currentCard = listOpenedCard[listOpenedCardLength - 1];
+    let iconCurrentCard = currentCard.firstElementChild.classList.value;
+
+    // compare the two values
+    if (iconPreviousCard === iconCurrentCard) {
+        matched(previousCard, currentCard);
+    } else {
+        notMatched(previousCard, currentCard);
+    }
 }
 
 /**
-* @description The cards do match, the cards stay the open position
-* @param {string} a - the element of a previous card
-* @param {string} b - the element of a current card
-*/
+ * @description The cards do match, the cards stay the open position
+ * @param {string} a - the element of a previous card
+ * @param {string} b - the element of a current card
+ */
 function matched(a, b) {
-	a.classList.add('match');
-	b.classList.add('match');
+    a.classList.add('match');
+    b.classList.add('match');
 }
 
 /**
-* @description The cards do not match, hide the card's symbol, remove the cards from the list and add cilck event to them
-* @param {string} a - the element of a previous card
-* @param {string} b - the element of a current card
-*/
+ * @description The cards do not match, hide the card's symbol, remove the cards from the list and add cilck event to them
+ * @param {string} a - the element of a previous card
+ * @param {string} b - the element of a current card
+ */
 function notMatched(a, b) {
-	a.classList.add('nomatch', 'flip-card');
-	b.classList.add('nomatch', 'flip-card');
-	
-	setTimeout(function () {
-		a.classList.remove('open', 'show', 'nomatch');
-		b.classList.remove('open', 'show', 'nomatch');
-	},1000);
+    a.classList.add('nomatch', 'flip-card');
+    b.classList.add('nomatch', 'flip-card');
 
-	a.addEventListener('click', flipCard);
-	b.addEventListener('click', flipCard);
-	listOpenedCard.pop();
-	listOpenedCard.pop();
+    setTimeout(function() {
+        a.classList.remove('open', 'show', 'nomatch');
+        b.classList.remove('open', 'show', 'nomatch');
+    }, 1000);
+
+    a.addEventListener('click', flipCard);
+    b.addEventListener('click', flipCard);
+    listOpenedCard.pop();
+    listOpenedCard.pop();
 }
 
 /**
-* @description All cards have matched, display a message with the final score 
-*/
+ * @description All cards have matched, display a message with the final score 
+ */
 function checkFinish() {
-	const modalPage = document.querySelector('.modal');
+    const modalPage = document.querySelector('.modal');
 
-	// check all cards have matched then stop timer and display a modal popup box
-	if (listOpenedCard.length === 16) {
-		setTimeout(function () {
-			modalPage.setAttribute('style','display: block;');
-		},1000);
+    // check all cards have matched then stop timer and display a modal popup box
+    if (listOpenedCard.length === 16) {
+        setTimeout(function() {
+            modalPage.setAttribute('style', 'display: block;');
+        }, 1000);
 
-		// stop the timer
-		stopTime();
-		// show a message with the final score in the modal popup box
-		showFinalScore();
-	}
+        // stop the timer
+        stopTime();
+        // show a message with the final score in the modal popup box
+        showFinalScore();
+    }
 }
 
 /**
-* @description Display a message with the final score of move counter, star rating and time
-*/
+ * @description Display a message with the final score of move counter, star rating and time
+ */
 function showFinalScore() {
-	const content = document.getElementById('show-content');
+    const content = document.getElementById('show-content');
 
-	content.innerHTML = `With ${moveCounter} Moves, ${star} Stars and Time: ${document.getElementById('timer').innerHTML}`
+    content.innerHTML = `With ${moveCounter} Moves, ${star} Stars and Time: ${document.getElementById('timer').innerHTML}`;
 }
 
 /**
-* @description Reset the game board, the timer, and the star rating.
-*/
+ * @description Reset the game board, the timer, and the star rating.
+ */
 function reloadPage() {
-	location.reload();
+    location.reload();
 }
 
 /**
-* @description Reset the game board, the timer, the star rating and Hidden the nodal popup when clicked 'play again' button
-*/
+ * @description Reset the game board, the timer, the star rating and Hidden the nodal popup when clicked 'play again' button
+ */
 function playGameAgain() {
-	const modalPage = document.querySelector('.modal');
+    const modalPage = document.querySelector('.modal');
 
-	reloadPage();
-	// hide the modal popup
-	modalPage.setAttribute('style','display: none;');
+    reloadPage();
+    // hide the modal popup
+    modalPage.setAttribute('style', 'display: none;');
 
 }
 
 /**
-* @description When the player starts a game by clicking a first card, a displayed timer start. 
-*/
+ * @description When the player starts a game by clicking a first card, a displayed timer start. 
+ */
 function startTimer() {
-	let start = Date.now();
+    let start = Date.now();
 
-	//store the function of setInterval
-	timer = setInterval(function() {
-		    const delta = Date.now() - start; 
-		    const hours = Math.floor((delta % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-		    const minutes = Math.floor((delta % (1000 * 60 * 60)) / (1000 * 60));
-		    const seconds = Math.floor((delta % (1000 * 60)) / 1000);
-		    // the calculated time  
-		    const totalTime = checkTime(hours) + ':' + checkTime(minutes) + ':' + checkTime(seconds);
-		    // display the calculated time on the page
-		    document.getElementById('timer').innerHTML = totalTime;
-		    // update time about every second
-			}, 1000); 
+    //store the function of setInterval
+    timer = setInterval(function() {
+        const delta = Date.now() - start;
+        const hours = Math.floor((delta % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((delta % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((delta % (1000 * 60)) / 1000);
+        // the calculated time  
+        const totalTime = checkTime(hours) + ':' + checkTime(minutes) + ':' + checkTime(seconds);
+        // display the calculated time on the page
+        document.getElementById('timer').innerHTML = totalTime;
+        // update time about every second
+    }, 1000);
 }
 
 /**
-* @description Add zero in front of numbers < 10
-* @param {...number} t
-* @returns {...number} t - concatenate between zero and number
-*/
+ * @description Add zero in front of numbers < 10
+ * @param {...number} t
+ * @returns {...number} t - concatenate between zero and number
+ */
 function checkTime(t) {
     if (t < 10) {
-    	t = '0' + t;
-    };  
+        t = '0' + t;
+    }
     return t;
 }
 
 /**
-* @description Once the player wins the game, the timer stops.
-*/
+ * @description Once the player wins the game, the timer stops.
+ */
 function stopTime() {
-	clearInterval(timer);
+    clearInterval(timer);
 }
 
 /**
-* @description increment the move counter and display it on the page, the current number of moves a user has made.
-*/
+ * @description increment the move counter and display it on the page, the current number of moves a user has made.
+ */
 function counter() {
-	// increment the move counter
-	moveCounter++;
-	// display the star rating
-	starRating();
+    // increment the move counter
+    moveCounter++;
+    // display the star rating
+    starRating();
 
-	const moves = document.querySelector('.moves');
-	// display the number of moves on the page
-	moves.textContent = moveCounter;
+    const moves = document.querySelector('.moves');
+    // display the number of moves on the page
+    moves.textContent = moveCounter;
 }
 
 /**
-* @description Display the star ratingdepends on the number of moves
-*/
+ * @description Display the star ratingdepends on the number of moves
+ */
 function starRating() {
-	starElement = document.getElementsByClassName('stars')[0];
-	thirdStar = starElement.getElementsByTagName('li')[2].firstElementChild;
-	secondStar = starElement.getElementsByTagName('li')[1].firstElementChild;
-	firstStar = starElement.getElementsByTagName('li')[0].firstElementChild;
+    const starElement = document.getElementsByClassName('stars')[0];
+    const secondStar = starElement.getElementsByTagName('li')[1].firstElementChild;
+    const thirdStar = starElement.getElementsByTagName('li')[2].firstElementChild;
 
-	// At the beginning of a game untill number of moves is 25, the star rating should display at 3 stars 
-	if (moveCounter <= 25) {
-		star = 3;
-	// number of moves greater than 26 and less than or equal 35, the star rating display at 2 stars
-	} else if (moveCounter <= 35) {
-		star = 2;
-		//display 2 stars on the page
-		thirdStar.classList.add('checked');
-	// number of moves greater than 36 and less than or equal 45, the star rating display at 1 stars
-	} else if (moveCounter <= 45) {
-		star = 1;
-		//display 1 star on the page
-		thirdStar.classList.add('checked');
-		secondStar.classList.add('checked');
-	// number of moves  greater than 46, no star rating show up
-	} else {
-		star = 0;
-		thirdStar.classList.add('checked');
-		secondStar.classList.add('checked');
-		firstStar.classList.add('checked');
-	}
+    // move less than 12,, get 3 stars 
+    if (moveCounter <= 12) {
+        star = 3;
+        // move less than 17, get 2 stars 
+    } else if (moveCounter <= 17) {
+        star = 2;
+        //display 2 stars on the page
+        thirdStar.classList.add('checked');
+        // move greater than 17, get 1 star 
+    } else if (moveCounter > 18) {
+        star = 1;
+        //display 1 star on the page
+        secondStar.classList.add('checked');
+        thirdStar.classList.add('checked');
+    }
 }
 
 /*
@@ -333,8 +328,8 @@ function starRating() {
 let cards = document.querySelectorAll('.card');
 
 for (let card of cards) {
-	card.addEventListener('click',flipCard);
-}	
+    card.addEventListener('click', flipCard);
+}
 
 /*
  * set up the event listener for start a new game when a restart button is clicked
@@ -349,8 +344,3 @@ restartGame.addEventListener('click', reloadPage);
 const playBtn = document.getElementById('play-game');
 
 playBtn.addEventListener('click', playGameAgain);
-
-
-
-	
-
