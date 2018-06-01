@@ -1,6 +1,6 @@
 # Memory Game Project
 
-The Memory Game project is an interactive game for single player. There are 8 pairs of cards that player need to match. Then display the matching results either correct matches or incorrect matches. It was modified the provided HTML and CSS styling files and also created a new JavaScript file for interacting with players. 
+The Memory Game project is an interactive game for single player. There are 8 pairs of cards that player need to match. It is web-based application using HTML, CSS, and JavaScript. 
 
 ## Table of Contents
 
