@@ -38,7 +38,7 @@ The game follows below process:-
 ** The star rating reflects a player's performance which depends on number of moves. 
 
 ** Star Rating Condition:-
-    1. Finish game with less than 25 moves, a player get 3 star
+*** Finish game with less than 25 moves, a player get 3 star
     2. Finish game with greater than 26 moves but less than 36 moves, a player get 2 stars
     3. Finish game with greater than 36 moves but less than 46 moves, a player get 1 stars
     4. Finish game with greater than 46 moves, a player get 0 star
