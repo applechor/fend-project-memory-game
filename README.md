@@ -36,9 +36,9 @@ The game follows below process:-
 * After player match all 8 cards, the congratulation page pop up with summary (Duration, Move count, and Star Rating)
 
 
-**Star Rating Condition:-**
+### Star Rating Condition:-
 
-* The star rating reflects a player's performance which depends on number of moves. 
+The star rating reflects a player's performance which depends on number of moves. 
 
   * Finish game with less than 25 moves, a player get 3 star
 
@@ -47,3 +47,5 @@ The game follows below process:-
   * Finish game with greater than 36 moves but less than 46 moves, a player get 1 stars
 
   * Finish game with greater than 46 moves, a player get 0 star
+  
+  ## Game dependencies
