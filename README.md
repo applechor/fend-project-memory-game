@@ -35,7 +35,8 @@ The game follows below process:-
 
 * After player match all 8 cards, the congratulation page pop up with summary (Duration, Move count, and Star Rating)
 
-#### Star Rating Condition:-
+
+**Star Rating Condition:-**
 
 * The star rating reflects a player's performance which depends on number of moves. 
 
