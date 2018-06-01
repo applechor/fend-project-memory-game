@@ -4,8 +4,8 @@ The Memory Game project is an interactive game for single player. There are 8 pa
 
 ## Table of Contents
 
-* [Instructions](#instructions)
-* [Detail of Memory Game](#Detail of Memory Game)
+* Instructions
+* Detail of Memory Game
 
 ## Instructions
 
@@ -39,10 +39,10 @@ The game follows below process:-
 
 * The star rating reflects a player's performance which depends on number of moves. 
 
-* Finish game with less than 25 moves, a player get 3 star
+  * Finish game with less than 25 moves, a player get 3 star
 
-* Finish game with greater than 26 moves but less than 36 moves, a player get 2 stars
+  * Finish game with greater than 26 moves but less than 36 moves, a player get 2 stars
 
-* Finish game with greater than 36 moves but less than 46 moves, a player get 1 stars
+  * Finish game with greater than 36 moves but less than 46 moves, a player get 1 stars
 
-* Finish game with greater than 46 moves, a player get 0 star
+  * Finish game with greater than 46 moves, a player get 0 star
