@@ -8,8 +8,6 @@ The Memory Game project is an interactive game for single player. There are 8 pa
 
 * Detail of Memory Game
 
-* The Game Process
-
 * Dependencies
 
 * Reference Resource
