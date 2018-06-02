@@ -5,7 +5,12 @@ The Memory Game project is an interactive game for single player. There are 8 pa
 ## Table of Contents
 
 * Instructions
+
 * Detail of Memory Game
+
+* Dependencies
+
+* Reference Resource
 
 ## Instructions
 
@@ -24,7 +29,7 @@ For the project instructions, look at [Udacity Classroom](https://classroom.udac
 In Memory Game, there are 16 cards in the deck (8 differenet pairs)
 
 
-### The game follows below process:-
+### The Game Process:-
 
 * Cards are randomly shuffled and hide symbols
 
@@ -41,15 +46,21 @@ In Memory Game, there are 16 cards in the deck (8 differenet pairs)
 
 The star rating reflects a player's performance which depends on number of moves. 
 
-  * Finish game with less than 25 moves, a player get 3 star
+  * Finish game with less than 12 moves, a player get 3 star
 
-  * Finish game with greater than 26 moves but less than 36 moves, a player get 2 stars
+  * Finish game with greater than 12 moves but less than 17 moves, a player get 2 stars
 
-  * Finish game with greater than 36 moves but less than 46 moves, a player get 1 stars
+  * Finish game with greater than 17 moves, a player get 1 stars
 
-  * Finish game with greater than 46 moves, a player get 0 star
+  ## Dependencies
   
-  ## Game dependencies
+  This game depends on a few libraries:
+  
+  * google fonts
+
+  * font awesome
+  
+  ## Reference Resource
   
   #### Animation
   
