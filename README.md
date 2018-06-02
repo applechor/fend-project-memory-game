@@ -5,7 +5,14 @@ The Memory Game project is an interactive game for single player. There are 8 pa
 ## Table of Contents
 
 * Instructions
+
 * Detail of Memory Game
+
+* The Game Process
+
+* Dependencies
+
+* Reference Resource
 
 ## Instructions
 
@@ -24,7 +31,7 @@ For the project instructions, look at [Udacity Classroom](https://classroom.udac
 In Memory Game, there are 16 cards in the deck (8 differenet pairs)
 
 
-### The game follows below process:-
+### The Game Process:-
 
 * Cards are randomly shuffled and hide symbols
 
