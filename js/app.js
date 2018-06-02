@@ -314,7 +314,7 @@ function starRating() {
         //display 2 stars on the page
         thirdStar.classList.add('checked');
         // move greater than 17, get 1 star 
-    } else if (moveCounter > 18) {
+    } else if (moveCounter > 17) {
         star = 1;
         //display 1 star on the page
         secondStar.classList.add('checked');
