@@ -46,11 +46,11 @@ In Memory Game, there are 16 cards in the deck (8 differenet pairs)
 
 The star rating reflects a player's performance which depends on number of moves. 
 
-  * Finish game with less than 25 moves, a player get 3 star
+  * Finish game with less than 12 moves, a player get 3 star
 
-  * Finish game with greater than 26 moves but less than 36 moves, a player get 2 stars
+  * Finish game with greater than 12 moves but less than 17 moves, a player get 2 stars
 
-  * Finish game with greater than 36 moves, a player get 1 stars
+  * Finish game with greater than 17 moves, a player get 1 stars
 
   ## Dependencies
   
