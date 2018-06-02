@@ -23,7 +23,8 @@ For the project instructions, look at [Udacity Classroom](https://classroom.udac
 
 In Memory Game, there are 16 cards in the deck (8 differenet pairs)
 
-The game follows below process:-
+
+### The game follows below process:-
 
 * Cards are randomly shuffled and hide symbols
 
@@ -36,9 +37,9 @@ The game follows below process:-
 * After player match all 8 cards, the congratulation page pop up with summary (Duration, Move count, and Star Rating)
 
 
-**Star Rating Condition:-**
+### Star Rating Condition:-
 
-* The star rating reflects a player's performance which depends on number of moves. 
+The star rating reflects a player's performance which depends on number of moves. 
 
   * Finish game with less than 25 moves, a player get 3 star
 
@@ -47,3 +48,25 @@ The game follows below process:-
   * Finish game with greater than 36 moves but less than 46 moves, a player get 1 stars
 
   * Finish game with greater than 46 moves, a player get 0 star
+  
+  ## Game dependencies
+  
+  #### Animation
+  
+  * [CSS Animation for Beginners](https://robots.thoughtbot.com/css-animation-for-beginners)
+  
+  * [CSS 2D Transforms](https://www.w3schools.com/css/css3_2dtransforms.asp)
+  
+  #### Flip card
+  
+  * [Card Flip](https://3dtransforms.desandro.com/card-flip)
+  
+  * [Understanding Card Flip animation using CSS](https://medium.com/designer-recipes/understanding-card-flip-animation-using-css-391c40ed3136)
+  
+  #### Timing
+  
+  * [JavaScript Timing Events](https://www.w3schools.com/js/js_timing.asp)
+  
+  * [Scheduling: setTimeout and setInterval](https://javascript.info/settimeout-setinterval)
+  
+  * [How TO - JavaScript Countdown Timer](https://www.w3schools.com/howto/howto_js_countdown.asp)
