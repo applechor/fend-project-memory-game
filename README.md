@@ -47,13 +47,11 @@ The star rating reflects a player's performance which depends on number of moves
 
   * Finish game with greater than 36 moves, a player get 1 stars
 
-  ## Dependency
+  ## Dependencies
   
   This game depends on a few libraries:
   
   * google fonts
-
-  * tether
 
   * font awesome
   
