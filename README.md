@@ -45,9 +45,8 @@ The star rating reflects a player's performance which depends on number of moves
 
   * Finish game with greater than 26 moves but less than 36 moves, a player get 2 stars
 
-  * Finish game with greater than 36 moves but less than 46 moves, a player get 1 stars
+  * Finish game with greater than 36 moves, a player get 1 stars
 
-  * Finish game with greater than 46 moves, a player get 0 star
   
   ## Game dependencies
   
